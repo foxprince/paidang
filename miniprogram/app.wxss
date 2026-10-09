@@ -1,0 +1,24 @@
+/* 拍档 · 全局样式
+   墨 #1a1a1a / 纸 #fafaf8 / 苔 #2f5d3a —— 三种之外不许再加 */
+
+page {
+  background-color: #fafaf8;
+  color: #1a1a1a;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.page {
+  padding: 32rpx;
+}
+
+.empty {
+  padding: 120rpx 0;
+  text-align: center;
+  color: #8a8a8a;
+}
+
+.primary {
+  background-color: #2f5d3a;
+  color: #fff;
+}
