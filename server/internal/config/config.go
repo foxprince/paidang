@@ -9,6 +9,10 @@ type Config struct {
 	JWTSecret    string
 	WechatAppID  string
 	WechatSecret string
+	// 订阅消息模板 ID（微信公众平台申请）
+	TplNewBooking    string
+	TplBookingResult string
+	TplBookingDone   string
 }
 
 func getenv(k, def string) string {
@@ -25,5 +29,9 @@ func Load() *Config {
 		JWTSecret:    os.Getenv("JWT_SECRET"),
 		WechatAppID:  os.Getenv("WECHAT_APPID"),
 		WechatSecret: os.Getenv("WECHAT_SECRET"),
+
+		TplNewBooking:    os.Getenv("WECHAT_TPL_NEW_BOOKING"),
+		TplBookingResult: os.Getenv("WECHAT_TPL_BOOKING_RESULT"),
+		TplBookingDone:   os.Getenv("WECHAT_TPL_BOOKING_DONE"),
 	}
 }

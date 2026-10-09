@@ -45,6 +45,7 @@ type Booking struct {
 	Student      *Student
 	StudentName  string `gorm:"size:64;not null"`
 	StudentPhone string `gorm:"size:20;not null"`
+	StudentOpenID *string `gorm:"size:64;index"` // 下单人 openid，用于订阅消息
 	PlayDate     string `gorm:"type:date;not null"` // YYYY-MM-DD
 	StartTime    string `gorm:"type:time;not null"`
 	EndTime      string `gorm:"type:time;not null"`

@@ -39,32 +39,33 @@ func main() {
 
 		authed := v1.Group("", middleware.JWT(cfg.JWTSecret))
 		{
-			authed.GET("/coach/me", h.NotImpl)
-			authed.PUT("/coach/profile", h.NotImpl)
-			authed.POST("/coach/publish", h.NotImpl)
-			authed.GET("/coach/today", h.NotImpl)
+			authed.GET("/coach/me", h.GetMe)
+			authed.PUT("/coach/profile", h.UpdateProfile)
+			authed.POST("/coach/publish", h.Publish)
+			authed.GET("/coach/today", h.Today)
 
-			authed.GET("/bookings", h.NotImpl)
-			authed.PATCH("/bookings/:id/confirm", h.NotImpl)
-			authed.PATCH("/bookings/:id/reject", h.NotImpl)
-			authed.PATCH("/bookings/:id/complete", h.NotImpl)
-			authed.PATCH("/bookings/:id/cancel", h.NotImpl)
-			authed.PATCH("/bookings/:id/mark-paid", h.NotImpl)
+			authed.GET("/bookings", h.ListBookings)
+			authed.PATCH("/bookings/:id/confirm", h.ConfirmBooking)
+			authed.PATCH("/bookings/:id/reject", h.RejectBooking)
+			authed.PATCH("/bookings/:id/complete", h.CompleteBooking)
+			authed.PATCH("/bookings/:id/cancel", h.CancelBooking)
+			authed.PATCH("/bookings/:id/mark-paid", h.MarkPaid)
 
-			authed.GET("/students", h.NotImpl)
-			authed.POST("/students", h.NotImpl)
-			authed.GET("/students/:id", h.NotImpl)
-			authed.POST("/students/:id/notes", h.NotImpl)
+			authed.GET("/students", h.ListStudents)
+			authed.POST("/students", h.CreateStudent)
+			authed.GET("/students/:id", h.GetStudent)
+			authed.POST("/students/:id/notes", h.AddNote)
 
-			authed.GET("/income/summary", h.NotImpl)
-			authed.POST("/complaints", h.NotImpl)
+			authed.GET("/income/summary", h.IncomeSummary)
+			authed.POST("/complaints", h.CreateComplaint)
 		}
 
 		// 学员端公开接口
-		v1.GET("/public/coach/:id", h.NotImpl)
-		v1.GET("/public/coach/:id/slots", h.NotImpl)
-		v1.POST("/public/bookings", h.NotImpl)
-		v1.POST("/public/sms-code", h.NotImpl)
+		v1.GET("/public/coach/:id", h.PublicCoach)
+		v1.GET("/public/coach/:id/slots", h.PublicSlots)
+		v1.POST("/public/bookings", h.PublicBooking)
+		v1.POST("/public/sms-code", h.SmsCode)
+		v1.POST("/public/reviews", h.PublicReview)
 	}
 
 	log.Fatal(r.Run(":" + cfg.Port))

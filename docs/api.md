@@ -39,6 +39,7 @@ Base: `https://api.paidang.example/api/v1`（示例）
 | GET | /public/coach/:id/slots | 无 | 学员端：`?date=` 可约时段 |
 | POST | /public/bookings | 无 | 学员下单 `{coach_id, date, start, end, name, phone, sms_code, idem_key}` |
 | POST | /public/sms-code | 无 | 发送短信验证码（限流 1/分钟） |
+| POST | /public/reviews | 无 | 学员评价 `{booking_id, rating, comment}`（仅已完成订单） |
 
 ## 错误码
 - `40001` 参数错误 / `40101` 未登录或 token 过期 / `40301` 无权限

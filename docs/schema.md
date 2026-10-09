@@ -47,6 +47,7 @@ CREATE TABLE bookings (
     student_id    BIGINT REFERENCES students(id),            -- 老学员关联；新学员下单时自动建档
     student_name  VARCHAR(64) NOT NULL,                      -- 下单时填写，快照
     student_phone VARCHAR(20) NOT NULL,
+    student_openid VARCHAR(64),                          -- 下单人 openid，用于订阅消息（002 迁移加入）
     play_date     DATE NOT NULL,
     start_time    TIME NOT NULL,
     end_time      TIME NOT NULL,
