@@ -66,6 +66,20 @@ func main() {
 		v1.POST("/public/bookings", h.PublicBooking)
 		v1.POST("/public/sms-code", h.SmsCode)
 		v1.POST("/public/reviews", h.PublicReview)
+
+		// 后台管理（JWT + 白名单）
+		admin := v1.Group("/admin", middleware.JWT(cfg.JWTSecret), middleware.AdminOnly(store, cfg.AdminOpenIDs))
+		{
+			admin.GET("/ping", h.AdminPing)
+			admin.GET("/coaches", h.AdminListCoaches)
+			admin.GET("/coaches/:id", h.AdminCoachDetail)
+			admin.PATCH("/coaches/:id/verify", h.AdminVerifyCoach)
+			admin.PATCH("/coaches/:id/status", h.AdminSetCoachStatus)
+			admin.GET("/complaints", h.AdminListComplaints)
+			admin.GET("/complaints/:id", h.AdminComplaintDetail)
+			admin.PATCH("/complaints/:id", h.AdminJudgeComplaint)
+			admin.GET("/stats", h.AdminStats)
+		}
 	}
 
 	log.Fatal(r.Run(":" + cfg.Port))

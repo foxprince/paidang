@@ -1,0 +1,26 @@
+<view class="page">
+  <view wx:if="{{stats}}">
+    <view class="section">陪练</view>
+    <view class="grid">
+      <view class="cell"><text class="num">{{stats.coaches_total}}</text><text class="lbl">总数</text></view>
+      <view class="cell"><text class="num">{{stats.coaches_published}}</text><text class="lbl">已发布</text></view>
+      <view class="cell"><text class="num {{stats.coaches_pending_verify > 0 ? 'red' : ''}}">{{stats.coaches_pending_verify}}</text><text class="lbl">待审核</text></view>
+    </view>
+
+    <view class="section">订单</view>
+    <view class="grid">
+      <view class="cell"><text class="num">{{stats.bookings_total}}</text><text class="lbl">总数</text></view>
+      <view class="cell"><text class="num">{{stats.bookings_today}}</text><text class="lbl">今日</text></view>
+      <view class="cell"><text class="num {{stats.complaints_open > 0 ? 'red' : ''}}">{{stats.complaints_open}}</text><text class="lbl">待处理投诉</text></view>
+    </view>
+    <view class="card">
+      <view class="row" wx:for="{{stats.byStatus}}" wx:key="k"><text>{{item.t}}</text><text>{{item.v}}</text></view>
+    </view>
+
+    <view class="section">收入（已收款）</view>
+    <view class="grid">
+      <view class="cell"><text class="num">¥{{stats.gmvTotalYuan}}</text><text class="lbl">累计</text></view>
+      <view class="cell"><text class="num">¥{{stats.gmvMonthYuan}}</text><text class="lbl">本月</text></view>
+    </view>
+  </view>
+</view>

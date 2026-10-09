@@ -1,0 +1,13 @@
+<view class="page">
+  <scroll-view class="tabs" scroll-x>
+    <text wx:for="{{tabs}}" wx:key="k" class="tab {{item.k === active ? 'on' : ''}}" data-k="{{item.k}}" bindtap="switchTab">{{item.t}}</text>
+  </scroll-view>
+  <view wx:if="{{list.length === 0}}" class="empty">没有投诉，太平无事。</view>
+  <view class="card {{item.overdue ? 'overdue' : ''}}" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
+    <view class="row">
+      <text class="name">{{item.coach_name}} · {{item.booking_date}}</text>
+      <text class="status {{item.overdue ? 'red' : ''}}">{{item.overdue ? '超时' : item.statusText}}</text>
+    </view>
+    <view class="meta">订单 #{{item.booking_id}}</view>
+  </view>
+</view>

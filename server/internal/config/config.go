@@ -1,6 +1,9 @@
 package config
 
-import "os"
+import (
+	"os"
+	"strings"
+)
 
 // 所有密钥走环境变量，永不进仓库
 type Config struct {
@@ -13,6 +16,8 @@ type Config struct {
 	TplNewBooking    string
 	TplBookingResult string
 	TplBookingDone   string
+	// 管理员 openid 白名单
+	AdminOpenIDs map[string]bool
 }
 
 func getenv(k, def string) string {
@@ -33,5 +38,18 @@ func Load() *Config {
 		TplNewBooking:    os.Getenv("WECHAT_TPL_NEW_BOOKING"),
 		TplBookingResult: os.Getenv("WECHAT_TPL_BOOKING_RESULT"),
 		TplBookingDone:   os.Getenv("WECHAT_TPL_BOOKING_DONE"),
+
+		AdminOpenIDs: parseSet(os.Getenv("ADMIN_OPENIDS")),
 	}
+}
+
+// parseSet "a,b,c" → map
+func parseSet(s string) map[string]bool {
+	m := map[string]bool{}
+	for _, p := range strings.Split(s, ",") {
+		if p = strings.TrimSpace(p); p != "" {
+			m[p] = true
+		}
+	}
+	return m
 }

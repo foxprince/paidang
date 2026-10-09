@@ -88,3 +88,13 @@ type Complaint struct {
 	HandledAt *time.Time
 	CreatedAt time.Time
 }
+
+type AdminLog struct {
+	ID          int64  `gorm:"primaryKey"`
+	AdminOpenID string `gorm:"size:64;not null"`
+	Action      string `gorm:"size:32;not null"` // verify_coach / set_status / judge_complaint
+	TargetType  string `gorm:"size:32;not null"` // coach / complaint
+	TargetID    int64  `gorm:"index;not null"`
+	Detail      string `gorm:"type:text"`
+	CreatedAt   time.Time
+}

@@ -1,0 +1,21 @@
+<view class="page">
+  <view wx:if="{{detail}}">
+    <view class="card">
+      <view class="row"><text class="name">{{detail.coach.nickname}}</text><text class="status">{{detail.complaint.status === 'open' ? '待处理' : '已处理'}}</text></view>
+      <view class="meta">订单 #{{detail.booking.id}} · {{detail.timeLabel}} · ¥{{detail.priceYuan}}</view>
+      <view class="meta">学员：{{detail.booking.student_name}} {{detail.booking.student_phone}}</view>
+    </view>
+
+    <view class="section">投诉说明</view>
+    <view class="card"><text>{{detail.complaint.detail || '（无文字说明）'}}</text></view>
+
+    <view class="section">证据</view>
+    <view wx:if="{{detail.evidence.length === 0}}" class="empty">无证据图片</view>
+    <image wx:for="{{detail.evidence}}" wx:key="*this" class="ev" src="{{item}}" mode="widthFix" show-menu-by-longpress></image>
+
+    <view class="actions" wx:if="{{detail.complaint.status === 'open'}}">
+      <button class="btn primary" data-r="upheld" bindtap="judge">成立</button>
+      <button class="btn" data-r="rejected" bindtap="judge">不成立</button>
+    </view>
+  </view>
+</view>

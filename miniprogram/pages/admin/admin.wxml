@@ -1,0 +1,16 @@
+<view class="page">
+  <view wx:if="{{!stats}}" class="empty">你不是管理员，或还没登录。</view>
+  <view wx:else>
+    <view class="todo" wx:if="{{stats.coaches_pending_verify > 0 || stats.complaints_open > 0}}">
+      <text wx:if="{{stats.coaches_pending_verify > 0}}">待审核 {{stats.coaches_pending_verify}} · </text>
+      <text wx:if="{{stats.complaints_open > 0}}" class="red">待处理投诉 {{stats.complaints_open}}</text>
+    </view>
+    <view class="menu" data-url="/pages/admin-coaches/admin-coaches" bindtap="go">
+      <text>陪练审核</text><text class="badge" wx:if="{{stats.coaches_pending_verify > 0}}">{{stats.coaches_pending_verify}}</text>
+    </view>
+    <view class="menu" data-url="/pages/admin-complaints/admin-complaints" bindtap="go">
+      <text>投诉处理</text><text class="badge red" wx:if="{{stats.complaints_open > 0}}">{{stats.complaints_open}}</text>
+    </view>
+    <view class="menu" data-url="/pages/admin-stats/admin-stats" bindtap="go"><text>数据看板</text></view>
+  </view>
+</view>

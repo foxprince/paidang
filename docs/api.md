@@ -41,6 +41,19 @@ Base: `https://api.paidang.example/api/v1`（示例）
 | POST | /public/sms-code | 无 | 发送短信验证码（限流 1/分钟） |
 | POST | /public/reviews | 无 | 学员评价 `{booking_id, rating, comment}`（仅已完成订单） |
 
+## 后台管理（需管理员白名单）
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET | /admin/ping | 是否管理员 |
+| GET | /admin/coaches?verified=&status= | 陪练列表 |
+| GET | /admin/coaches/:id | 陪练详情 |
+| PATCH | /admin/coaches/:id/verify | 审核 `{verified, note}` |
+| PATCH | /admin/coaches/:id/status | 改状态 `{status, note}` |
+| GET | /admin/complaints?status= | 投诉列表 |
+| GET | /admin/complaints/:id | 投诉详情 |
+| PATCH | /admin/complaints/:id | 裁决 `{result: upheld/rejected, note}` |
+| GET | /admin/stats | 数据看板 |
+
 ## 错误码
 - `40001` 参数错误 / `40101` 未登录或 token 过期 / `40301` 无权限
 - `40401` 不存在 / `40901` 时段冲突 / `42901` 触发限流

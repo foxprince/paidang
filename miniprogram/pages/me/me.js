@@ -7,10 +7,16 @@ Page({
     priceYuan: '', video_url: '', pay_qr_url: '',
     published: false,
     days: [], // [{k:'0', name:'周日', text:'09:00-10:00,14:00-15:00'}]
+    isAdmin: false,
   },
 
   onShow() {
     this.load();
+    request('/admin/ping').then(() => this.setData({ isAdmin: true })).catch(() => {});
+  },
+
+  goAdmin() {
+    wx.navigateTo({ url: '/pages/admin/admin' });
   },
 
   load() {

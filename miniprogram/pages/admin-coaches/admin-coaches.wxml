@@ -1,0 +1,13 @@
+<view class="page">
+  <scroll-view class="tabs" scroll-x>
+    <text wx:for="{{tabs}}" wx:key="k" class="tab {{item.k === active ? 'on' : ''}}" data-k="{{item.k}}" bindtap="switchTab">{{item.t}}</text>
+  </scroll-view>
+  <view wx:if="{{list.length === 0}}" class="empty">没有待审核的陪练。</view>
+  <view class="card" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
+    <view class="row">
+      <text class="name">{{item.nickname}}</text>
+      <text class="meta">{{item.verified ? '已验证' : '未验证'}} · 污点 {{item.demerits}}</text>
+    </view>
+    <view class="meta">{{item.title}} {{item.home_court}}</view>
+  </view>
+</view>

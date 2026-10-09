@@ -1,0 +1,7 @@
+.tabs { white-space: nowrap; margin-bottom: 20rpx; }
+.tab { display: inline-block; padding: 12rpx 28rpx; margin-right: 16rpx; font-size: 26rpx; color: #8a8a8a; background: #fff; border-radius: 999rpx; }
+.tab.on { background: #2f5d3a; color: #fff; }
+.card { background: #fff; border-radius: 12rpx; padding: 28rpx; margin-bottom: 20rpx; }
+.row { display: flex; justify-content: space-between; align-items: center; }
+.name { font-size: 32rpx; font-weight: 600; }
+.meta { margin-top: 6rpx; font-size: 26rpx; color: #8a8a8a; }
