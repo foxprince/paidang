@@ -1,15 +1,30 @@
-.section {
-  margin: 24rpx 0 16rpx;
-  font-size: 28rpx;
+.card {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+}
+.name {
+  font-size: 34rpx;
   font-weight: 600;
 }
-.section:first-child {
-  margin-top: 0;
-}
-.hint {
+.level {
   font-size: 24rpx;
+  color: #2f5d3a;
+  font-weight: 400;
+}
+.meta {
+  margin-top: 6rpx;
+  font-size: 26rpx;
   color: #8a8a8a;
-  margin-bottom: 16rpx;
+}
+.note {
+  margin-top: 8rpx;
+}
+.section {
+  margin: 32rpx 0 16rpx;
+  font-size: 28rpx;
+  font-weight: 600;
 }
 .field {
   margin-bottom: 20rpx;
@@ -27,24 +42,11 @@
   font-size: 28rpx;
 }
 .area {
-  min-height: 120rpx;
-}
-.dayrow {
-  display: flex;
-  align-items: center;
-  gap: 16rpx;
-  margin-bottom: 12rpx;
-}
-.dayname {
-  width: 80rpx;
-  font-size: 28rpx;
-}
-.dayinput {
-  flex: 1;
+  min-height: 140rpx;
 }
 .block {
   width: 100%;
-  margin-top: 16rpx;
+  margin: 12rpx 0 24rpx;
 }
 .btn {
   font-size: 28rpx;
@@ -55,10 +57,6 @@
 }
 .btn.primary {
   background: #2f5d3a;
-  color: #fff;
-}
-.btn.danger {
-  background: #b3261e;
   color: #fff;
 }
 button::after {

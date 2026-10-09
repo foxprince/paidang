@@ -1,0 +1,32 @@
+<view class="page">
+  <!-- 新建 -->
+  <view wx:if="{{isNew}}">
+    <view class="field"><text class="label">姓名 *</text><input class="input" data-k="name" bindinput="onInput" placeholder="学员姓名" /></view>
+    <view class="field"><text class="label">手机</text><input class="input" data-k="phone" bindinput="onInput" placeholder="手机号" type="number" maxlength="11" /></view>
+    <view class="field"><text class="label">微信</text><input class="input" data-k="wechat" bindinput="onInput" placeholder="微信号" /></view>
+    <view class="field"><text class="label">水平</text><input class="input" data-k="level" bindinput="onInput" placeholder="如：新手 / 3.0" /></view>
+    <button class="btn primary block" bindtap="onCreate">保存</button>
+  </view>
+
+  <!-- 详情 -->
+  <view wx:else>
+    <view class="card">
+      <view class="name">{{student.name}} <text class="level" wx:if="{{student.level}}">{{student.level}}</text></view>
+      <view class="meta" wx:if="{{student.phone}}">{{student.phone}}</view>
+      <view class="meta" wx:if="{{student.wechat}}">微信：{{student.wechat}}</view>
+    </view>
+
+    <view class="section">按次课备注</view>
+    <view class="field"><text class="label">本节要点 *</text><textarea class="input area" data-k="keyPoints" bindinput="onInput" value="{{keyPoints}}" placeholder="今天练了什么，问题在哪" /></view>
+    <view class="field"><text class="label">下节计划</text><textarea class="input area" data-k="nextPlan" bindinput="onInput" value="{{nextPlan}}" placeholder="下次练什么" /></view>
+    <button class="btn primary block" bindtap="onAddNote">记一笔</button>
+
+    <view class="section">历史记录</view>
+    <view wx:if="{{notes.length === 0}}" class="empty">还没有备注，上完课记一笔。</view>
+    <view class="card" wx:for="{{notes}}" wx:key="id">
+      <view class="meta">{{item.dateLabel}}</view>
+      <view class="note">{{item.key_points}}</view>
+      <view class="meta" wx:if="{{item.next_plan}}">下节：{{item.next_plan}}</view>
+    </view>
+  </view>
+</view>

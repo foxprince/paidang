@@ -1,3 +1,20 @@
 <view class="page">
-  <view class="empty">把主页收拾体面，生意自己上门。</view>
+  <view class="section">基本信息</view>
+  <view class="field"><text class="label">昵称</text><input class="input" data-k="nickname" bindinput="onInput" value="{{nickname}}" /></view>
+  <view class="field"><text class="label">头衔</text><input class="input" data-k="title" bindinput="onInput" value="{{title}}" placeholder="如：前省队" /></view>
+  <view class="field"><text class="label">简介</text><textarea class="input area" data-k="bio" bindinput="onInput" value="{{bio}}" placeholder="一句话介绍自己" /></view>
+  <view class="field"><text class="label">常出没球场</text><input class="input" data-k="home_court" bindinput="onInput" value="{{home_court}}" /></view>
+  <view class="field"><text class="label">价格（元/小时）</text><input class="input" data-k="priceYuan" bindinput="onInput" value="{{priceYuan}}" type="digit" placeholder="如：200" /></view>
+  <view class="field"><text class="label">对打视频链接 *</text><input class="input" data-k="video_url" bindinput="onInput" value="{{video_url}}" placeholder="30 秒对打视频，发布必填" /></view>
+  <view class="field"><text class="label">微信收款码图片链接</text><input class="input" data-k="pay_qr_url" bindinput="onInput" value="{{pay_qr_url}}" placeholder="上传到图床后的链接" /></view>
+
+  <view class="section">可约时段</view>
+  <view class="hint">格式：09:00-10:00,14:00-15:00，留空表示当天不约</view>
+  <view class="dayrow" wx:for="{{days}}" wx:key="k">
+    <text class="dayname">{{item.name}}</text>
+    <input class="input dayinput" data-k="{{item.k}}" bindinput="onDayInput" value="{{item.text}}" placeholder="如：09:00-12:00" />
+  </view>
+
+  <button class="btn primary block" bindtap="onSave">保存</button>
+  <button class="btn block {{published ? 'danger' : 'primary'}}" bindtap="onPublish">{{published ? '下架主页' : '发布主页'}}</button>
 </view>

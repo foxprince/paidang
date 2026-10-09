@@ -1,3 +1,30 @@
 <view class="page">
-  <view class="empty">待确认的预约会置顶在这里。</view>
+  <scroll-view class="tabs" scroll-x>
+    <text
+      wx:for="{{tabs}}" wx:key="k"
+      class="tab {{item.k === active ? 'on' : ''}}"
+      data-k="{{item.k}}" bindtap="switchTab"
+    >{{item.t}}</text>
+  </scroll-view>
+
+  <view wx:if="{{list.length === 0 && !loading}}" class="empty">这里空空如也。</view>
+
+  <view class="card" wx:for="{{list}}" wx:key="id">
+    <view class="row">
+      <text class="date">{{item.dateLabel}}</text>
+      <text class="status">{{item.statusText}}</text>
+    </view>
+    <view class="name">{{item.student_name}} · {{item.student_phone}}</view>
+    <view class="meta">¥{{item.priceYuan}}{{item.pay_status === 'paid' ? ' · 已收款' : ''}}</view>
+    <view class="actions" wx:if="{{item.status === 'pending'}}">
+      <button class="btn primary" data-id="{{item.id}}" bindtap="onConfirm">确认</button>
+      <button class="btn" data-id="{{item.id}}" bindtap="onReject">拒绝</button>
+    </view>
+    <view class="actions" wx:if="{{item.status === 'confirmed'}}">
+      <button class="btn primary" data-id="{{item.id}}" bindtap="onComplete">完成</button>
+      <button class="btn" data-id="{{item.id}}" bindtap="onMarkPaid" wx:if="{{item.pay_status !== 'paid'}}">确认收款</button>
+      <button class="btn" data-id="{{item.id}}" bindtap="onCancel">取消</button>
+    </view>
+  </view>
+  <view wx:if="{{noMore && list.length > 0}}" class="empty">到底了</view>
 </view>

@@ -1,3 +1,20 @@
 <view class="page">
-  <view class="empty">今天还没有课。</view>
+  <view wx:if="{{loading}}" class="empty">加载中…</view>
+  <view wx:elif="{{list.length === 0}}" class="empty">今天还没有课。</view>
+  <view wx:else>
+    <view class="card" wx:for="{{list}}" wx:key="id">
+      <view class="row">
+        <text class="time">{{item.timeLabel}}</text>
+        <text class="status">{{item.statusText}}</text>
+      </view>
+      <view class="name">{{item.student_name}} · {{item.student_phone}}</view>
+      <view class="actions" wx:if="{{item.status === 'pending'}}">
+        <button class="btn primary" data-id="{{item.id}}" bindtap="onConfirm">确认</button>
+        <button class="btn" data-id="{{item.id}}" bindtap="onReject">拒绝</button>
+      </view>
+      <view class="actions" wx:if="{{item.status === 'confirmed'}}">
+        <button class="btn primary" data-id="{{item.id}}" bindtap="onComplete">完成</button>
+      </view>
+    </view>
+  </view>
 </view>

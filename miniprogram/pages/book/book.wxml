@@ -1,3 +1,38 @@
 <view class="page">
-  <view class="empty">选择时间，填写联系方式即可预约。</view>
+  <view wx:if="{{done}}" class="done">
+    <view class="done-title">预约已提交</view>
+    <view class="done-sub">陪练确认后会微信通知你</view>
+  </view>
+
+  <view wx:else>
+    <view class="section">日期</view>
+    <scroll-view class="dates" scroll-x>
+      <text
+        wx:for="{{dates}}" wx:key="date"
+        class="date {{index === dateIdx ? 'on' : ''}}"
+        data-i="{{index}}" bindtap="pickDate"
+      >{{item.label}}</text>
+    </scroll-view>
+
+    <view class="section">时段</view>
+    <view wx:if="{{slots.length === 0}}" class="empty">这天约满了，换天看看。</view>
+    <view class="slotgrid">
+      <text
+        wx:for="{{slots}}" wx:key="start"
+        class="slot {{index === slotIdx ? 'on' : ''}}"
+        data-i="{{index}}" bindtap="pickSlot"
+      >{{item.label}}</text>
+    </view>
+
+    <view class="section">联系方式</view>
+    <view class="field"><input class="input" data-k="name" bindinput="onInput" placeholder="姓名" /></view>
+    <view class="field"><input class="input" data-k="phone" bindinput="onInput" placeholder="手机号" type="number" maxlength="11" /></view>
+    <view class="coderow">
+      <input class="input code" data-k="code" bindinput="onInput" placeholder="验证码" type="number" maxlength="6" />
+      <button class="btn small" bindtap="sendCode" disabled="{{counting > 0}}">{{counting > 0 ? counting + 's' : '发送验证码'}}</button>
+    </view>
+    <view class="hint">单次付款，不要大额预付。费用线下扫陪练微信支付。</view>
+
+    <button class="btn primary block" bindtap="submit" loading="{{submitting}}">提交预约</button>
+  </view>
 </view>

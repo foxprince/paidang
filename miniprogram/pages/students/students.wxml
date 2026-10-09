@@ -1,3 +1,12 @@
 <view class="page">
-  <view class="empty">还没有学员，先去分享你的主页。</view>
+  <button class="btn primary block" bindtap="goNew">+ 新增学员</button>
+  <view wx:if="{{list.length === 0 && !loading}}" class="empty">还没有学员，先去分享你的主页。</view>
+  <view class="card" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
+    <view class="row">
+      <text class="name">{{item.name}}</text>
+      <text class="level" wx:if="{{item.level}}">{{item.level}}</text>
+    </view>
+    <view class="meta" wx:if="{{item.phone}}">{{item.phone}}</view>
+  </view>
+  <view wx:if="{{noMore && list.length > 0}}" class="empty">到底了</view>
 </view>

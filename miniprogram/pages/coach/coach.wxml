@@ -1,3 +1,29 @@
 <view class="page">
-  <view class="empty">正在加载陪练主页…</view>
+  <view wx:if="{{loading}}" class="empty">加载中…</view>
+  <view wx:elif="{{coach}}">
+    <view class="hero">
+      <text class="nickname">{{coach.nickname}}</text>
+      <text class="title" wx:if="{{coach.title}}">{{coach.title}}</text>
+      <text class="verified" wx:if="{{coach.verified}}">平台验证</text>
+    </view>
+
+    <video wx:if="{{coach.video_url}}" class="video" src="{{coach.video_url}}" controls show-center-play-btn></video>
+
+    <view class="card">
+      <view class="row"><text>价格</text><text class="price">¥{{coach.priceYuan}}/小时</text></view>
+      <view class="row" wx:if="{{coach.home_court}}"><text>常出没</text><text>{{coach.home_court}}</text></view>
+      <view class="row"><text>评分</text><text>{{avgRating}}（{{reviews.length}} 条评价）</text></view>
+    </view>
+
+    <view class="bio" wx:if="{{coach.bio}}">{{coach.bio}}</view>
+
+    <view class="section">评价</view>
+    <view wx:if="{{reviews.length === 0}}" class="empty">还没有评价。</view>
+    <view class="card" wx:for="{{reviews}}" wx:key="id">
+      <view class="row"><text class="stars">{{item.stars}}</text></view>
+      <view wx:if="{{item.comment}}">{{item.comment}}</view>
+    </view>
+
+    <button class="btn primary block" bindtap="goBook">预约</button>
+  </view>
 </view>

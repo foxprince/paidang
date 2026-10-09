@@ -1,3 +1,23 @@
 <view class="page">
-  <view class="empty">确认收款后，数字会出现在这里。</view>
+  <view class="monthbar">
+    <button class="mini" data-d="-1" bindtap="shift">‹</button>
+    <text class="month">{{month}}</text>
+    <button class="mini" data-d="1" bindtap="shift">›</button>
+  </view>
+
+  <view wx:if="{{loading}}" class="empty">算账中…</view>
+  <view wx:elif="{{summary}}">
+    <view class="hero">
+      <text class="amount">¥{{summary.totalYuan}}</text>
+      <text class="sub">实收 · {{summary.orders}} 单 · {{summary.hours}} 小时</text>
+    </view>
+    <view class="section">学员贡献</view>
+    <view wx:if="{{summary.byStudent.length === 0}}" class="empty">确认收款后，数字会出现在这里。</view>
+    <view class="card" wx:for="{{summary.byStudent}}" wx:key="name">
+      <view class="row">
+        <text>{{item.name}} · {{item.count}} 单</text>
+        <text class="amount-sm">¥{{item.totalYuan}}</text>
+      </view>
+    </view>
+  </view>
 </view>

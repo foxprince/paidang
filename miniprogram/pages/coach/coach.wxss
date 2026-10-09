@@ -1,1 +1,71 @@
-/* 陪练主页 */
+.hero {
+  margin-bottom: 20rpx;
+}
+.nickname {
+  font-size: 44rpx;
+  font-weight: 700;
+  display: block;
+}
+.title {
+  font-size: 28rpx;
+  color: #555;
+  display: block;
+}
+.verified {
+  font-size: 24rpx;
+  color: #2f5d3a;
+}
+.video {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  background: #000;
+}
+.card {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rpx 0;
+  font-size: 28rpx;
+}
+.price {
+  font-weight: 700;
+  color: #2f5d3a;
+}
+.stars {
+  color: #2f5d3a;
+  letter-spacing: 4rpx;
+}
+.bio {
+  margin-bottom: 20rpx;
+  color: #333;
+}
+.section {
+  margin: 24rpx 0 16rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.block {
+  width: 100%;
+  margin: 24rpx 0;
+}
+.btn {
+  font-size: 30rpx;
+  line-height: 2.6;
+  border-radius: 8rpx;
+  background: #eee;
+  color: #1a1a1a;
+}
+.btn.primary {
+  background: #2f5d3a;
+  color: #fff;
+}
+button::after {
+  border: none;
+}

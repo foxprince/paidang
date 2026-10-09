@@ -1,1 +1,64 @@
-/* 预约管理 */
+.tabs {
+  white-space: nowrap;
+  margin-bottom: 20rpx;
+}
+.tab {
+  display: inline-block;
+  padding: 12rpx 28rpx;
+  margin-right: 16rpx;
+  font-size: 26rpx;
+  color: #8a8a8a;
+  background: #fff;
+  border-radius: 999rpx;
+}
+.tab.on {
+  background: #2f5d3a;
+  color: #fff;
+}
+.card {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.status {
+  font-size: 24rpx;
+  color: #2f5d3a;
+}
+.name {
+  margin-top: 8rpx;
+}
+.meta {
+  margin-top: 4rpx;
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+.actions {
+  margin-top: 20rpx;
+  display: flex;
+  gap: 16rpx;
+}
+.btn {
+  flex: 1;
+  font-size: 26rpx;
+  line-height: 2.4;
+  border-radius: 8rpx;
+  background: #eee;
+  color: #1a1a1a;
+}
+.btn.primary {
+  background: #2f5d3a;
+  color: #fff;
+}
+button::after {
+  border: none;
+}
