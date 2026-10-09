@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"github.com/foxprince/paidang/server/internal/service"
 	"github.com/foxprince/paidang/server/pkg/mask"
 	"github.com/foxprince/paidang/server/pkg/response"
 )
@@ -146,4 +147,28 @@ func (h *Handler) AdminStats(c *gin.Context) {
 		return
 	}
 	response.OK(c, st)
+}
+
+// AdminCreateCoach 管理员手动建档，返回认领码
+func (h *Handler) AdminCreateCoach(c *gin.Context) {
+	var req struct {
+		Name      string  `json:"name" binding:"required"`
+		Phone     string  `json:"phone"`
+		Title     string  `json:"title"`
+		PriceYuan float64 `json:"price_yuan"`
+		Bio       string  `json:"bio"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		response.Err(c, 40001, "姓名必填")
+		return
+	}
+	coach, err := h.svc.AdminCreateCoach(h.adminOpenID(c), service.CreateCoachInput{
+		Name: req.Name, Phone: req.Phone, Title: req.Title,
+		PriceYuan: req.PriceYuan, Bio: req.Bio,
+	})
+	if err != nil {
+		response.Err(c, 40001, err.Error())
+		return
+	}
+	response.OK(c, coach)
 }

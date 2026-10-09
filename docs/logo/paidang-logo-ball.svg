@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- 拍档 logo · 方案二：网球线稿款 —— 一笔弧线即网球，字标在下 -->
+  <defs>
+    <clipPath id="paidang-ball"><circle cx="256" cy="196" r="130"/></clipPath>
+  </defs>
+  <circle cx="256" cy="196" r="130" fill="none" stroke="#1a1a1a" stroke-width="18"/>
+  <g clip-path="url(#paidang-ball)" fill="none" stroke="#2f5d3a" stroke-width="15" stroke-linecap="round">
+    <path d="M192,86 C122,140 122,252 192,306"/>
+    <path d="M320,86 C390,140 390,252 320,306"/>
+  </g>
+  <text x="256" y="404" text-anchor="middle"
+        font-family="'Noto Serif CJK SC','Songti SC','STSong','Noto Serif SC',serif"
+        font-weight="700" font-size="78" letter-spacing="10" fill="#1a1a1a">拍档</text>
+  <text x="256" y="452" text-anchor="middle"
+        font-family="'Noto Sans CJK SC','PingFang SC',sans-serif"
+        font-size="23" letter-spacing="13" fill="#1a1a1a" opacity="0.55">PAIDANG</text>
+</svg>

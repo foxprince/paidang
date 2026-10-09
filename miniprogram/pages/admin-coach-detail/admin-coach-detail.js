@@ -28,8 +28,11 @@ Page({
     });
   },
 
-  onVerify(e) {
-    const verified = e.currentTarget.dataset.v === '1';
+  onCopyCode() {
+    wx.setClipboardData({ data: this.data.coach.claim_code || '' });
+  },
+
+  onVerify(e) {    const verified = e.currentTarget.dataset.v === '1';
     this.askNote(verified ? '通过审核？' : '驳回并下架？', note => {
       request(`/admin/coaches/${this.data.id}/verify`, { method: 'PATCH', data: { verified, note } })
         .then(() => { toast(verified ? '已通过' : '已下架'); return this.load(); })

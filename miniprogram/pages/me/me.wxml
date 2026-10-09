@@ -18,4 +18,5 @@
   <button class="btn primary block" bindtap="onSave">保存</button>
   <button class="btn block {{published ? 'danger' : 'primary'}}" bindtap="onPublish">{{published ? '下架主页' : '发布主页'}}</button>
   <button class="btn block" wx:if="{{isAdmin}}" bindtap="goAdmin">管理后台</button>
+  <view class="claimlink" bindtap="goClaim">有认领码？去认领档案 ›</view>
 </view>

@@ -1,0 +1,18 @@
+<view class="page">
+  <view wx:if="{{done}}" class="done">
+    <view class="done-title">建档成功</view>
+    <view class="done-sub">把认领码发给陪练，他在小程序里输入即绑定</view>
+    <view class="code">{{done.claim_code}}</view>
+    <button class="btn primary block" bindtap="onCopy">复制认领码</button>
+    <button class="btn block" bindtap="onAgain">继续添加</button>
+  </view>
+
+  <view wx:else>
+    <view class="field"><text class="label">姓名 *</text><input class="input" data-k="name" bindinput="onInput" placeholder="陪练姓名" /></view>
+    <view class="field"><text class="label">手机</text><input class="input" data-k="phone" bindinput="onInput" placeholder="手机号" type="number" maxlength="11" /></view>
+    <view class="field"><text class="label">头衔</text><input class="input" data-k="title" bindinput="onInput" placeholder="如：前省队" /></view>
+    <view class="field"><text class="label">价格（元/小时）</text><input class="input" data-k="priceYuan" bindinput="onInput" type="digit" placeholder="如：200" /></view>
+    <view class="field"><text class="label">简介</text><textarea class="input area" data-k="bio" bindinput="onInput" placeholder="一句话介绍" /></view>
+    <button class="btn primary block" bindtap="onSubmit">建档并生成认领码</button>
+  </view>
+</view>

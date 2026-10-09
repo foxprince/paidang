@@ -53,6 +53,12 @@ Base: `https://api.paidang.example/api/v1`（示例）
 | GET | /admin/complaints/:id | 投诉详情 |
 | PATCH | /admin/complaints/:id | 裁决 `{result: upheld/rejected, note}` |
 | GET | /admin/stats | 数据看板 |
+| POST | /admin/coaches | 管理员手动建档 `{name, phone, title, price_yuan, bio}` → 返回认领码 |
+
+## 陪练端
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| POST | /coach/claim | 输入认领码绑定档案 `{claim_code}` → 返回新 token |
 
 ## 错误码
 - `40001` 参数错误 / `40101` 未登录或 token 过期 / `40301` 无权限

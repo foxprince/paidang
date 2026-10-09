@@ -1,0 +1,8 @@
+<view class="page">
+  <view class="wrap">
+    <view class="title">认领档案</view>
+    <view class="sub">管理员建档后会给你一个 6 位认领码，输入即绑定</view>
+    <input class="input code" bindinput="onInput" placeholder="6 位认领码" type="number" maxlength="6" />
+    <button class="btn primary block" bindtap="onClaim">认领</button>
+  </view>
+</view>

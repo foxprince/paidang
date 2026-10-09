@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- 拍档 logo · 方案一：印章款 —— 墨底白字，像一枚私章；App 图标场景最稳 -->
+  <rect x="48" y="48" width="416" height="416" rx="104" fill="#1a1a1a"/>
+  <text x="256" y="266" text-anchor="middle" dominant-baseline="central"
+        font-family="'Noto Serif CJK SC','Songti SC','STSong','Noto Serif SC',serif"
+        font-weight="700" font-size="188" letter-spacing="6" fill="#fafaf8">拍档</text>
+</svg>

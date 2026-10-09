@@ -9,7 +9,6 @@ import (
 	"github.com/foxprince/paidang/server/internal/wechat"
 	"github.com/foxprince/paidang/server/pkg/response"
 )
-
 // WechatLogin 小程序 wx.login 拿 code 换 token
 func (h *Handler) WechatLogin(c *gin.Context) {
 	var req struct {
@@ -39,4 +38,30 @@ func (h *Handler) WechatLogin(c *gin.Context) {
 		return
 	}
 	response.OK(c, gin.H{"token": signed, "is_new": isNew})
+}
+
+// ClaimCoach 输入认领码绑定档案。绑定后 coach_id 变化，签发新 token。
+func (h *Handler) ClaimCoach(c *gin.Context) {
+	var req struct {
+		ClaimCode string `json:"claim_code" binding:"required"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		response.Err(c, 40001, "认领码必填")
+		return
+	}
+	target, err := h.svc.ClaimCoach(h.coachID(c), req.ClaimCode)
+	if err != nil {
+		response.Err(c, 40001, err.Error())
+		return
+	}
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"coach_id": target.ID,
+		"exp":      time.Now().Add(7 * 24 * time.Hour).Unix(),
+	})
+	signed, err := token.SignedString([]byte(h.cfg.JWTSecret))
+	if err != nil {
+		response.Err(c, 50001, "服务异常")
+		return
+	}
+	response.OK(c, gin.H{"token": signed, "coach": target})
 }

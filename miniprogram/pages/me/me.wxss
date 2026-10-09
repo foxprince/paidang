@@ -64,3 +64,4 @@
 button::after {
   border: none;
 }
+.claimlink { margin-top: 32rpx; text-align: center; font-size: 26rpx; color: #8a8a8a; }

@@ -5,6 +5,10 @@
       <view class="meta">{{coach.title}} · {{coach.home_court}}</view>
       <view class="meta">¥{{coach.priceYuan}}/小时 · 污点 {{coach.demerits}} · 订单 {{bookings}} · 评价 {{reviews}}</view>
       <view class="meta" wx:if="{{coach.verified}}">平台验证徽章已发放</view>
+      <view class="claimrow" wx:if="{{coach.claim_code}}">
+        <text class="meta">认领码：<text class="code">{{coach.claim_code}}</text></text>
+        <button class="btn mini" bindtap="onCopyCode">复制</button>
+      </view>
     </view>
     <view class="bio" wx:if="{{coach.bio}}">{{coach.bio}}</view>
     <video wx:if="{{coach.video_url}}" class="video" src="{{coach.video_url}}" controls show-center-play-btn></video>

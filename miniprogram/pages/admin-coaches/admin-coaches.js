@@ -30,4 +30,8 @@ Page({
   goDetail(e) {
     wx.navigateTo({ url: `/pages/admin-coach-detail/admin-coach-detail?id=${e.currentTarget.dataset.id}` });
   },
+
+  goNew() {
+    wx.navigateTo({ url: '/pages/admin-coach-new/admin-coach-new' });
+  },
 });

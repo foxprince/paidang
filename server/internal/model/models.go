@@ -19,6 +19,7 @@ type Coach struct {
 	Verified     bool      `gorm:"not null;default:false"`
 	Published    bool      `gorm:"not null;default:false"`
 	Demerits     int       `gorm:"not null;default:0"`
+	ClaimCode    *string    `gorm:"size:6"` // 认领码，管理员建档后生成，认领后清空
 	Status       string    `gorm:"size:16;not null;default:'active'"`
 	CreatedAt    time.Time
 	UpdatedAt    time.Time

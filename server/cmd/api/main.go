@@ -39,6 +39,7 @@ func main() {
 
 		authed := v1.Group("", middleware.JWT(cfg.JWTSecret))
 		{
+			authed.POST("/coach/claim", h.ClaimCoach)
 			authed.GET("/coach/me", h.GetMe)
 			authed.PUT("/coach/profile", h.UpdateProfile)
 			authed.POST("/coach/publish", h.Publish)
@@ -71,6 +72,7 @@ func main() {
 		admin := v1.Group("/admin", middleware.JWT(cfg.JWTSecret), middleware.AdminOnly(store, cfg.AdminOpenIDs))
 		{
 			admin.GET("/ping", h.AdminPing)
+			admin.POST("/coaches", h.AdminCreateCoach)
 			admin.GET("/coaches", h.AdminListCoaches)
 			admin.GET("/coaches/:id", h.AdminCoachDetail)
 			admin.PATCH("/coaches/:id/verify", h.AdminVerifyCoach)

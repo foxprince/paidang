@@ -19,6 +19,10 @@ Page({
     wx.navigateTo({ url: '/pages/admin/admin' });
   },
 
+  goClaim() {
+    wx.navigateTo({ url: '/pages/claim/claim' });
+  },
+
   load() {
     return request('/coach/me')
       .then(c => {

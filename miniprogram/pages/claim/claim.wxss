@@ -1,0 +1,9 @@
+.wrap { padding: 80rpx 0; }
+.title { font-size: 40rpx; font-weight: 700; text-align: center; }
+.sub { margin: 12rpx 0 48rpx; color: #8a8a8a; font-size: 26rpx; text-align: center; }
+.input { background: #fff; border-radius: 8rpx; padding: 20rpx 24rpx; font-size: 28rpx; }
+.code { text-align: center; font-size: 48rpx; letter-spacing: 16rpx; margin-bottom: 32rpx; }
+.block { width: 100%; }
+.btn { font-size: 28rpx; line-height: 2.4; border-radius: 8rpx; background: #eee; color: #1a1a1a; }
+.btn.primary { background: #2f5d3a; color: #fff; }
+button::after { border: none; }

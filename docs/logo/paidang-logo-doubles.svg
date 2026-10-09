@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- 拍档 logo · 方案三：双打款 —— 两环相交，两个人、双打、拍档；苔绿是关键动作色 -->
+  <circle cx="198" cy="192" r="102" fill="none" stroke="#1a1a1a" stroke-width="18"/>
+  <circle cx="314" cy="192" r="102" fill="none" stroke="#2f5d3a" stroke-width="18"/>
+  <text x="256" y="398" text-anchor="middle"
+        font-family="'Noto Serif CJK SC','Songti SC','STSong','Noto Serif SC',serif"
+        font-weight="700" font-size="78" letter-spacing="10" fill="#1a1a1a">拍档</text>
+  <text x="256" y="448" text-anchor="middle"
+        font-family="'Noto Sans CJK SC','PingFang SC',sans-serif"
+        font-size="24" letter-spacing="6" fill="#1a1a1a" opacity="0.55">好生意，需要好拍档</text>
+</svg>
